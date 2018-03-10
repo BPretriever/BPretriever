@@ -1,0 +1,89 @@
+digraph G {
+
+node[fontname="meiryo"]; //Jananese font setting
+edge[fontname="meiryo"]; //Janapese font setting
+rankdir=LR;
+
+node [shape=box, style=rounded];
+
+subgraph clusterSL1{
+labeljust=l;
+label= "SL1";
+
+AN0[label="A"];
+AN5[label="B_1"];
+SN_SL1_0[label="", shape=circle, width="0.3"];
+dn_SL1_3[label="", shape=none, width="0.3"];
+dn_SL1_4[label="", shape=none, width="0.3"];
+dn_SL1_5[label="", shape=none, width="0.3"];
+dn_SL1_6[label="", shape=none, width="0.3"];
+dn_SL1_7[label="", shape=none, width="0.3"];
+
+SN_SL1_0 -> AN0;
+AN0 -> AN5;
+AN5 -> dn_SL1_3[style=invis];
+dn_SL1_3 -> dn_SL1_4[style=invis];
+dn_SL1_4 -> dn_SL1_5[style=invis];
+dn_SL1_5 -> dn_SL1_6[style=invis];
+dn_SL1_6 -> dn_SL1_7[style=invis];
+}
+
+subgraph clusterSL2{
+labeljust=l;
+label= "SL2";
+
+AN1[label="C"];
+dn_SL2_0[label="", shape=none, width="0.3"];
+dn_SL2_1[label="", shape=none, width="0.3"];
+dn_SL2_2[label="", shape=none, width="0.3"];
+dn_SL2_7[label="", shape=none, width="0.3"];
+dn_SL2_4[label="", shape=none, width="0.3"];
+dn_SL2_5[label="", shape=none, width="0.3"];
+dn_SL2_6[label="", shape=none, width="0.3"];
+
+dn_SL2_0 -> dn_SL2_1[style=invis];
+dn_SL2_1 -> dn_SL2_2[style=invis];
+dn_SL2_2 -> AN1[style=invis];
+AN1 -> dn_SL2_4[style=invis];
+dn_SL2_4 -> dn_SL2_5[style=invis];
+dn_SL2_5 -> dn_SL2_6[style=invis];
+dn_SL2_6 -> dn_SL2_7[style=invis];
+}
+
+subgraph clusterSL3{
+labeljust=l;
+label= "SL3";
+
+AN3[label="D"];
+AN4[label="E"];
+AN6[label="F_2"];
+EN_SL3_7[label="", shape=circle, width="0.3", style=bold];
+dn_SL3_0[label="", shape=none, width="0.3"];
+dn_SL3_1[label="", shape=none, width="0.3"];
+dn_SL3_2[label="", shape=none, width="0.3"];
+dn_SL3_3[label="", shape=none, width="0.3"];
+
+AN3 -> AN4;
+AN4 -> AN6;
+AN6 -> EN_SL3_7;
+dn_SL3_0 -> dn_SL3_1[style=invis];
+dn_SL3_1 -> dn_SL3_2[style=invis];
+dn_SL3_2 -> dn_SL3_3[style=invis];
+dn_SL3_3 -> AN3[style=invis];
+}
+
+AN5 -> AN1;
+AN1 -> AN3;
+
+HN_1[label="", shape=none, width="0.1"];
+HN_1 -> SN_SL1_0[style=invis, weight ="20"];
+
+HN_2[label="", shape=none, width="0.1"];
+HN_2 -> dn_SL2_0[style=invis, weight ="20"];
+
+HN_3[label="", shape=none, width="0.1"];
+HN_3 -> dn_SL3_0[style=invis, weight ="20"];
+
+{rank = min ;HN_1;HN_2;HN_3}
+
+}

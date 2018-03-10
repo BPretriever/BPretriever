@@ -1,0 +1,8 @@
+digraph G {
+
+node[fontname="meiryo"]; //Jananese font setting
+edge[fontname="meiryo"]; //Janapese font setting
+rankdir=LR;
+
+node [shape=box, style=rounded];
+
